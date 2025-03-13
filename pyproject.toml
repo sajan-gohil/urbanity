@@ -25,6 +25,7 @@ networkit = "^11.1"
 h5py = "^3.13.0"
 python-dotenv = "^1.0.1"
 matplotlib = "^3.10.1"
+pyarrow = "^19.0.1"
 
 [tool.poetry.dev-dependencies]
 jupyter = "^1.0.0"

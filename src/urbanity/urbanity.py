@@ -188,8 +188,8 @@ class Map(ipyleaflet.Map):
         gdf = gdf.drop(columns=timestamp_columns)
 
         
-        if len(gdf) > 1:
-            gdf = dissolve_poly(gdf, self.country)
+        # if len(gdf) > 1:
+        #     gdf = dissolve_poly(gdf, self.country)
 
         # Assign polygon boundary attribute to polygon object
         gdf = gdf.to_crs('epsg:4326')
