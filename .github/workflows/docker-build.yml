@@ -7,6 +7,9 @@ on:
       - "poetry.lock"
       - "src/**"
       - "docs/**"
+      - "Dockerfile"
+      - ".github/workflows/docker-build.yml"
+      
     branches:
       - main
 
