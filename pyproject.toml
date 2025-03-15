@@ -27,6 +27,9 @@ python-dotenv = "^1.0.1"
 matplotlib = "^3.10.1"
 pyarrow = "^19.0.1"
 h3 = "3.7.4"
+pandarallel = "^1.6.5"
+folium = "^0.19.5"
+geodatasets = "^2024.8.0"
 
 [tool.poetry.dev-dependencies]
 jupyter = "^1.0.0"
