@@ -168,15 +168,18 @@ class Map(ipyleaflet.Map):
         filepath: str,
         layer_name: str = 'Site', 
         polygon_style: dict = {'style': {'color': 'black', 'fillColor': '#3366cc', 'opacity':0.05, 'weight':1.9, 'dashArray':'2', 'fillOpacity':0.6},
-                                         'hover_style': {'fillColor': 'red' , 'fillOpacity': 0.2}},                   
-        show: bool = False) -> None:
+                                         'hover_style': {'fillColor': 'red' , 'fillOpacity': 0.2}},
+        show: bool = False,
+        dissolve_subzones: bool = True) -> None:
         """Adds geographical boundary from specified filepath. Accepts .geojson and .shapefile objects.
 
         Args:
             filepath (str): Filepath to vector file.
             layer_name (str, optional): Layer name to display on map object. Defaults to 'Site'.
             polygon_style (dict, optional): Default visualisation parameters to display geographical layer. Defaults to {'style': {'color': 'black', 'fillColor': '#3366cc', 'opacity':0.05, 'weight':1.9, 'dashArray':'2', 'fillOpacity':0.6}, 'hover_style': {'fillColor': 'red' , 'fillOpacity': 0.2}}.
-        """        
+            show (bool, optional): If True, displays map object. Defaults to False.
+            dissolve_subzones (bool): If True, dissolves subzones within boundary. Defaults to False.
+        """
 
         if filepath[-7:] == 'parquet':
             gdf = gpd.read_parquet(filepath)
@@ -188,8 +191,9 @@ class Map(ipyleaflet.Map):
         gdf = gdf.drop(columns=timestamp_columns)
 
         
-        # if len(gdf) > 1:
-        #     gdf = dissolve_poly(gdf, self.country)
+
+        if dissolve_subzones and len(gdf) > 1:
+            gdf = dissolve_poly(gdf, self.country)
 
         # Assign polygon boundary attribute to polygon object
         gdf = gdf.to_crs('epsg:4326')
