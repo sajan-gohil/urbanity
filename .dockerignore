@@ -1,3 +1,5 @@
 .venv
-Untitled.ipynb
+*.ipynb
 data
+*.7z
+

@@ -1910,8 +1910,8 @@ class Map(ipyleaflet.Map):
         aggregate_gdf = project_gdf(aggregate_gdf)
 
         # Add subzone area and perimeter
-        aggregate_gdf['subzone_area'] = aggregate_gdf.geometry.area.values / 1000000
-        aggregate_gdf['subzone_perimeter'] = aggregate_gdf.geometry.length.values / 1000
+        aggregate_gdf['subzone_area'] = aggregate_gdf.geometry.area.values / 1000000  # km2
+        aggregate_gdf['subzone_perimeter'] = aggregate_gdf.geometry.length.values / 1000  # km
 
         if get_graph:
             if self.network:
