@@ -149,4 +149,7 @@ dist/
 # Experimental scripts
 src/urbanity/experimental.py
 visuals/
-other_data/other_notebooks/
+other_data/
+other_notebooks/
+saved_data*
+map_htmls/
